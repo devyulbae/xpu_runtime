@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xpuruntime"
+version = "0.1.0"
+description = "Unified GPU/NPU execution runtime for ML workloads"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "devyulbae" }
+]
+keywords = ["gpu", "npu", "cuda", "tensorrt", "onnx", "inference", "training"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.21",
+]
+
+[project.optional-dependencies]
+tensorrt = []
+torch = ["torch>=2.0"]
+onnx = ["onnx>=1.14"]
+openvino = ["openvino>=2023.0"]
+qnn = []
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "ruff",
+    "mypy",
+]
+docs = ["sphinx", "sphinx-rtd-theme"]
+all = ["xpuruntime[tensorrt,torch,onnx,openvino,qnn,dev,docs]"]
+
+[project.urls]
+Homepage = "https://github.com/devyulbae/xpu_runtime"
+Repository = "https://github.com/devyulbae/xpu_runtime"
+Issues = "https://github.com/devyulbae/xpu_runtime/issues"
+
+[tool.setuptools.packages.find]
+where = ["src/python"]

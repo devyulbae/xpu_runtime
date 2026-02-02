@@ -1,0 +1,6 @@
+# C++ tests (TASK_002: core skeleton)
+if(XRT_BUILD_TESTS)
+  add_executable(xpuruntime_test_core test_core.cpp)
+  target_link_libraries(xpuruntime_test_core PRIVATE xpuruntime_core)
+  add_test(NAME xpuruntime_core COMMAND xpuruntime_test_core)
+endif()
