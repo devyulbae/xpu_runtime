@@ -44,6 +44,13 @@ Design and architecture docs are in [`docs/`](docs/):
 - [08_testing_strategy.md](docs/08_testing_strategy.md) – Testing strategy
 - [docs/tasks/](docs/tasks/) – Task breakdown (TASK_001–014)
 
+## Open Source & Contributing
+
+xpuruntime is **open source** and maintained as a **nonprofit, community-driven** project. We welcome contributions: bug reports, feature ideas, docs, and code. Issues tagged with `good first issue` or `help wanted` are a good place to start.
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** – 개발 환경 설정, PR 절차, 코드 스타일
+- **[Issues](https://github.com/devyulbae/xpu_runtime/issues)** – 버그 리포트, 기능 제안, 기여 이슈
+
 ## License
 
 This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for the full text.
