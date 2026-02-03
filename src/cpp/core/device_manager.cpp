@@ -31,6 +31,8 @@ DeviceManager::DeviceManager() : current_device_(0) {
     info.supports_fp16 = false;
     info.supports_bf16 = false;
     info.supports_int8 = false;
+    info.supports_fp8 = false;
+    info.supports_int4 = false;
     cudaDeviceProp prop;
     if (cudaGetDeviceProperties(&prop, i) == cudaSuccess) {
       info.name = prop.name;
@@ -46,6 +48,8 @@ DeviceManager::DeviceManager() : current_device_(0) {
       info.supports_fp16 = (prop.major >= 5);
       info.supports_bf16 = (prop.major >= 8);
       info.supports_int8 = true;
+      info.supports_fp8 = (prop.major >= 9);   // Ada/Hopper+
+      info.supports_int4 = (prop.major >= 9);  // modern GPUs
     }
   }
 }

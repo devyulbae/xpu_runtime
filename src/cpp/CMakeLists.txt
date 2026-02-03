@@ -24,7 +24,12 @@ target_link_libraries(xpuruntime_core PUBLIC
 )
 
 if(XRT_BUILD_PYTHON)
-  pybind11_add_module(_core bindings/module.cpp)
+  pybind11_add_module(_core
+    bindings/module.cpp
+    bindings/exception_binding.cpp
+    bindings/device_binding.cpp
+    bindings/memory_binding.cpp
+  )
   target_link_libraries(_core PRIVATE xpuruntime_core)
   target_include_directories(_core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS _core LIBRARY DESTINATION xpuruntime RUNTIME DESTINATION xpuruntime ARCHIVE DESTINATION xpuruntime)

@@ -11,6 +11,7 @@
 |--------|------|--------|
 | 2026-02-02 | [TASK_001](../tasks/TASK_001_project_scaffold.md) | 프로젝트 스캐폴드 |
 | 2026-02-02 | [TASK_002](../tasks/TASK_002_cpp_core_skeleton.md) | C++ 코어 스켈레톤 |
+| 2026-02-02 | [TASK_003](../tasks/TASK_003_python_binding.md) | Python 바인딩 기본 |
 
 ---
 
@@ -70,6 +71,35 @@
 
 ---
 
+## TASK_003: Python 바인딩 기본 (2026-02-02)
+
+### 맞닥뜨린 문제
+
+- **상황**: TASK_002로 C++ 코어 스켈레톤(DeviceManager, MemoryManager, 예외 등)은 있지만, Python에서 **직접 쓸 수 있는 바인딩**이 없음. `module.cpp`에는 `get_version()`만 노출된 상태.
+- **결과**: Python 사용자가 `xpuruntime.XpuRuntimeError`, `DeviceManager.instance()`, `MemoryManager` 등을 쓸 수 없음. 예외 변환(C++ → Python)도 없어 C++에서 던진 예외가 Python에서 제대로 잡히지 않음.
+
+### 해결 방법
+
+1. **예외 바인딩**  
+   - `exception_binding.cpp`: `XpuRuntimeError`, `CudaError`, `OutOfMemoryError`, `UnsupportedOperationError`를 pybind11로 등록하고, `register_exception_translator`로 C++ 예외를 Python 예외로 변환.
+2. **Device / Memory 바인딩**  
+   - `device_binding.cpp`: `DeviceInfo`(readonly 속성, `__repr__`), `DeviceManager`(싱글톤, nodelete holder, get_device_count 등).  
+   - `memory_binding.cpp`: `MemoryType` enum, `MemoryManager::Stats`, `MemoryManager`(instance, get_allocated_size, get_cached_size, get_stats, empty_cache).
+3. **모듈 통합**  
+   - `module.cpp`에서 `bind_exceptions`, `bind_device`, `bind_memory` 호출 후 `get_version` 노출. CMake에 새 바인딩 소스 추가.
+4. **Python 패키지**  
+   - `__init__.py`: `_core` 있으면 해당 예외·클래스·함수 re-export, 없으면 **Python 폴백 예외 클래스** 정의 후 Device/Memory는 None. `get_version()`은 기존처럼 네이티브/폴백 분기.
+5. **테스트**  
+   - 예외 클래스 존재·raise/catch, `_core` 있을 때만 DeviceManager/MemoryManager 호출 테스트(skipif).
+
+### 얻은 효과
+
+- **`import xpuruntime` 후** `xpuruntime.XpuRuntimeError`, `CudaError`, `OutOfMemoryError`, `UnsupportedOperationError` 사용 가능(네이티브 빌드 시 C++ 예외가 Python으로 변환됨, 순수 Python 시 폴백 클래스).
+- **네이티브 빌드 환경**에서는 `DeviceManager.instance()`, `get_device_count()`, `MemoryManager.instance()`, `get_allocated_size()` 등 호출 가능.
+- **순수 Python 환경**에서도 `pytest tests/python -v` 통과(예외 테스트 + 네이티브 전용 테스트는 skip).
+
+---
+
 ## 요약
 
-- **Phase 1: Foundation** – TASK_001 완료 (스캐폴드 + Windows 순수 Python 경로 확보), TASK_002 완료 (C++ 코어 스켈레톤)
+- **Phase 1: Foundation** – TASK_001 완료 (스캐폴드 + Windows 순수 Python 경로 확보), TASK_002 완료 (C++ 코어 스켈레톤), TASK_003 완료 (Python 바인딩 기본)

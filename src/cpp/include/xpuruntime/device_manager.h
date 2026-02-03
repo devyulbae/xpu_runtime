@@ -20,6 +20,8 @@ struct DeviceInfo {
   bool supports_fp16;
   bool supports_bf16;
   bool supports_int8;
+  bool supports_fp8;
+  bool supports_int4;
 };
 
 class DeviceManager {
