@@ -100,4 +100,4 @@ pybind11_add_module(_core
 
 ## 관련 문서
 
-- [03_python_binding.md](../03_python_binding.md)
+- [03_python_binding.md](../plans/03_python_binding.md)

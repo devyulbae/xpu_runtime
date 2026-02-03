@@ -174,4 +174,4 @@ def get_dispatch_logs():
 
 ## 관련 문서
 
-- [06_kernel_policy.md](../06_kernel_policy.md)
+- [06_kernel_policy.md](../plans/06_kernel_policy.md)

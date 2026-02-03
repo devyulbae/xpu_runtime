@@ -1,6 +1,6 @@
-# 완료된 작업 (Completed Tasks)
+# 완료된 작업 로그 (Task Log)
 
-> 태스크를 하나씩 완료할 때마다 **맞닥뜨린 문제 → 해결 방법 → 얻은 효과** 형식으로 기록합니다.  
+> **기록 위치**: 태스크 완료 시 **이 파일(`docs/tasks/task_log.md`)** 에 기록합니다. **형식**: **맞닥뜨린 문제 → 해결 방법 → 얻은 효과**.  
 > BE/개발자 관점에서 “무슨 상황이었고, 어떻게 풀었고, 그 결과 무엇이 좋아졌는지”를 남깁니다.
 
 ---
@@ -9,9 +9,9 @@
 
 | 완료일 | Task | 작업명 |
 |--------|------|--------|
-| 2026-02-02 | [TASK_001](../tasks/TASK_001_project_scaffold.md) | 프로젝트 스캐폴드 |
-| 2026-02-02 | [TASK_002](../tasks/TASK_002_cpp_core_skeleton.md) | C++ 코어 스켈레톤 |
-| 2026-02-02 | [TASK_003](../tasks/TASK_003_python_binding.md) | Python 바인딩 기본 |
+| 2026-02-02 | [TASK_001](./TASK_001_project_scaffold.md) | 프로젝트 스캐폴드 |
+| 2026-02-02 | [TASK_002](./TASK_002_cpp_core_skeleton.md) | C++ 코어 스켈레톤 |
+| 2026-02-03 | [TASK_003](./TASK_003_python_binding.md) | Python 바인딩 기본 |
 
 ---
 

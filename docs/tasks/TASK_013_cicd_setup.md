@@ -201,5 +201,5 @@ addopts = -v --tb=short
 
 ## 관련 문서
 
-- [07_build_packaging.md](../07_build_packaging.md)
-- [08_testing_strategy.md](../08_testing_strategy.md)
+- [07_build_packaging.md](../plans/07_build_packaging.md)
+- [08_testing_strategy.md](../plans/08_testing_strategy.md)

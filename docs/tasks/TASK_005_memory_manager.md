@@ -108,4 +108,4 @@ Stats MemoryManager::get_stats(int device_id) const {
 
 ## 관련 문서
 
-- [02_cpp_core_runtime.md](../02_cpp_core_runtime.md)
+- [02_cpp_core_runtime.md](../plans/02_cpp_core_runtime.md)

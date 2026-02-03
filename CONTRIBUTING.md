@@ -31,7 +31,7 @@ xpuruntime은 **오픈 소스·비영리**로 운영되며, 커뮤니티 기여�
 
 4. **C++/CUDA 빌드 (선택)**  
    CUDA Toolkit + CMake가 있는 환경에서만 필요합니다.  
-   자세한 내용은 [docs/07_build_packaging.md](docs/07_build_packaging.md)를 참고하세요.
+   자세한 내용은 [docs/plans/07_build_packaging.md](docs/plans/07_build_packaging.md)를 참고하세요.
 
 ## Pull Request 절차
 

@@ -27,22 +27,23 @@ Default install is **pure Python** (no CUDA/CMake required):
 pip install -e ".[dev]"   # editable + dev deps
 ```
 
-The C++/CUDA extension is optional; when CUDA and CMake are available, see [07_build_packaging.md](docs/07_build_packaging.md) for native build.
+The C++/CUDA extension is optional; when CUDA and CMake are available, see [07_build_packaging.md](docs/plans/07_build_packaging.md) for native build.
 
 ## Documentation
 
-Design and architecture docs are in [`docs/`](docs/):
+- **설계/계획**: [`docs/plans/`](docs/plans/) – Vision, architecture, C++/Python/빌드/테스트 등
+- **작업**: [`docs/tasks/`](docs/tasks/) – TASK_001~014, task_log
+- **이슈 초안**: [`docs/issues/`](docs/issues/) – GitHub Issue용 초안
+- **현재 구조**: [CURRENT_ARCHITECTURE.md](docs/CURRENT_ARCHITECTURE.md) – 구현 상태 점검
 
-- [00_overview.md](docs/00_overview.md) – Vision, target users, differentiation
-- [01_architecture.md](docs/01_architecture.md) – Architecture
-- [02_cpp_core_runtime.md](docs/02_cpp_core_runtime.md) – C++ core
-- [03_python_binding.md](docs/03_python_binding.md) – Python bindings
-- [04_inference_module.md](docs/04_inference_module.md) – Inference module
-- [05_training_module.md](docs/05_training_module.md) – Training module
-- [06_kernel_policy.md](docs/06_kernel_policy.md) – Kernel policy
-- [07_build_packaging.md](docs/07_build_packaging.md) – Build & packaging
-- [08_testing_strategy.md](docs/08_testing_strategy.md) – Testing strategy
-- [docs/tasks/](docs/tasks/) – Task breakdown (TASK_001–014)
+| 문서 | 설명 |
+|------|------|
+| [00_overview](docs/plans/00_overview.md) | 비전, 타깃 사용자, 차별화 |
+| [01_architecture](docs/plans/01_architecture.md) | 아키텍처 |
+| [02_cpp_core_runtime](docs/plans/02_cpp_core_runtime.md) | C++ 코어 |
+| [03_python_binding](docs/plans/03_python_binding.md) | Python 바인딩 |
+| [04~08](docs/plans/) | Inference, Training, Kernel policy, Build, Testing |
+| [tasks/](docs/tasks/) | TASK_001~014, task_log |
 
 ## Open Source & Contributing
 

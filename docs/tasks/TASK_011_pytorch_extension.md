@@ -128,4 +128,4 @@ def capture_graph():
 
 ## 관련 문서
 
-- [05_training_module.md](../05_training_module.md)
+- [05_training_module.md](../plans/05_training_module.md)

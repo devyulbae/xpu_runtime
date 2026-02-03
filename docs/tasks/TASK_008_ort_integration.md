@@ -125,4 +125,4 @@ def test_ort_inference():
 
 ## 관련 문서
 
-- [04_inference_module.md](../04_inference_module.md)
+- [04_inference_module.md](../plans/04_inference_module.md)

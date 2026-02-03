@@ -165,4 +165,4 @@ python -c "import xpuruntime; print(xpuruntime.__version__)"
 
 ## 관련 문서
 
-- [07_build_packaging.md](../07_build_packaging.md)
+- [07_build_packaging.md](../plans/07_build_packaging.md)

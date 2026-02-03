@@ -147,4 +147,4 @@ target_link_libraries(xpuruntime_tensorrt PRIVATE
 
 ## 관련 문서
 
-- [04_inference_module.md](../04_inference_module.md)
+- [04_inference_module.md](../plans/04_inference_module.md)

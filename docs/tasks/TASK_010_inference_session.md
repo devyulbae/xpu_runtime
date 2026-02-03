@@ -162,4 +162,4 @@ sess.run_with_io_binding(binding)
 
 ## 관련 문서
 
-- [04_inference_module.md](../04_inference_module.md)
+- [04_inference_module.md](../plans/04_inference_module.md)

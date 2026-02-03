@@ -82,5 +82,5 @@ xpuruntime/
 
 ## 관련 문서
 
-- [01_architecture.md](../01_architecture.md)
-- [07_build_packaging.md](../07_build_packaging.md)
+- [01_architecture.md](../plans/01_architecture.md)
+- [07_build_packaging.md](../plans/07_build_packaging.md)
