@@ -70,7 +70,8 @@ htmlcov/
 coverage.xml
 *.cover
 
-# Misc
+# Logs and error dumps (e.g. Intel GPU kernel compiler output)
 *.log
+*.errors.txt
 .DS_Store
 Thumbs.db

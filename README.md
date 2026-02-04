@@ -29,6 +29,25 @@ pip install -e ".[dev]"   # editable + dev deps
 
 The C++/CUDA extension is optional; when CUDA and CMake are available, see [07_build_packaging.md](docs/plans/07_build_packaging.md) for native build.
 
+Optional extras (e.g. Intel GPU device count and inference):
+
+```bash
+pip install xpuruntime[intel]      # Intel GPU count via OpenCL (pyopencl)
+pip install xpuruntime[openvino]   # Intel GPU/CPU inference; no manual OpenVINO setup
+```
+
+Example: run inference on Intel GPU (device selection is handled for you):
+
+```python
+from xpuruntime.inference import create_openvino_session
+import numpy as np
+
+session = create_openvino_session("model.onnx", device="auto")  # auto = Intel GPU if available
+outputs = session.run({session.input_names[0]: your_input_array})
+```
+
+See [examples/intel_gpu_openvino_demo.py](examples/intel_gpu_openvino_demo.py).
+
 ## Documentation
 
 - **설계/계획**: [`docs/plans/`](docs/plans/) – Vision, architecture, C++/Python/빌드/테스트 등
