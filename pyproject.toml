@@ -37,6 +37,7 @@ torch = ["torch>=2.0"]
 onnx = ["onnx>=1.14"]
 openvino = ["openvino>=2023.0"]
 qnn = []
+intel = ["pyopencl>=2022.1"]
 dev = [
     "pytest>=7.0",
     "pytest-cov",
@@ -45,7 +46,7 @@ dev = [
     "mypy",
 ]
 docs = ["sphinx", "sphinx-rtd-theme"]
-all = ["xpuruntime[tensorrt,torch,onnx,openvino,qnn,dev,docs]"]
+all = ["xpuruntime[tensorrt,torch,onnx,openvino,qnn,intel,dev,docs]"]
 
 [project.urls]
 Homepage = "https://github.com/devyulbae/xpu_runtime"

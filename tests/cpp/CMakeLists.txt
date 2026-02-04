@@ -1,6 +1,10 @@
-# C++ tests (TASK_002: core skeleton)
+# C++ tests (TASK_002 core + TASK_004 DeviceManager)
 if(XRT_BUILD_TESTS)
   add_executable(xpuruntime_test_core test_core.cpp)
   target_link_libraries(xpuruntime_test_core PRIVATE xpuruntime_core)
   add_test(NAME xpuruntime_core COMMAND xpuruntime_test_core)
+
+  add_executable(xpuruntime_test_device_manager test_device_manager.cpp)
+  target_link_libraries(xpuruntime_test_device_manager PRIVATE xpuruntime_core)
+  add_test(NAME xpuruntime_device_manager COMMAND xpuruntime_test_device_manager)
 endif()

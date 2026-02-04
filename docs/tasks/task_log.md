@@ -12,6 +12,7 @@
 | 2026-02-02 | [TASK_001](./TASK_001_project_scaffold.md) | 프로젝트 스캐폴드 |
 | 2026-02-02 | [TASK_002](./TASK_002_cpp_core_skeleton.md) | C++ 코어 스켈레톤 |
 | 2026-02-03 | [TASK_003](./TASK_003_python_binding.md) | Python 바인딩 기본 |
+| 2026-02-03 | [TASK_004](./TASK_004_device_manager.md) | DeviceManager 구현 |
 
 ---
 
@@ -100,6 +101,32 @@
 
 ---
 
+## TASK_004: DeviceManager 구현 (2026-02-03)
+
+### 맞닥뜨린 문제
+
+- **상황**: TASK_003으로 C++ DeviceManager/MemoryManager가 Python에 바인딩되었지만, **고수준 Python API**가 없음. 사용자가 `_core.DeviceManager.instance().get_device_count()`처럼 직접 C++ 싱글톤을 호출해야 함.
+- **결과**: `xrt.get_device_count()`, `xrt.set_current_device()`, `xrt.Device(0)` 같은 관용적 API가 없어 상위 태스크(메모리/스트림/추론 등)에서 일관된 진입점을 쓰기 어려움.
+
+### 해결 방법
+
+1. **Python 런타임 래퍼**  
+   - `src/python/xpuruntime/runtime/device.py` 추가: `Device` 클래스, `get_device_count()`, `set_current_device()`, `get_current_device()` 구현. `_core` 없을 때는 적절히 예외/폴백 처리.
+2. **패키지 진입점 통일**  
+   - `__init__.py`에서 `Device`, `get_device_count`, `get_current_device`, `set_current_device` re-export. `import xpuruntime as xrt` 후 `xrt.get_device_count()` 등으로 사용 가능.
+3. **C++ / Python 테스트**  
+   - C++: DeviceManager 단위 테스트(get_device_count, get_device_info, set_current_device).  
+   - Python: device 래퍼 및 re-export 테스트(네이티브 빌드 시에만 디바이스 API 호출, 순수 Python 시 skip).
+
+### 얻은 효과
+
+- **단일 진입점**: `xrt.get_device_count()`, `xrt.set_current_device(0)`, `xrt.Device(0)` 등으로 디바이스 관리 가능.
+- TASK_005(MemoryManager), TASK_008~010(추론 세션) 등에서 **동일한 device API**를 기준으로 구현·테스트 가능.
+- 순수 Python 빌드에서도 테스트 스위트 통과 유지(디바이스 관련 테스트는 `_core` 유무에 따라 skip).
+
+---
+
 ## 요약
 
 - **Phase 1: Foundation** – TASK_001 완료 (스캐폴드 + Windows 순수 Python 경로 확보), TASK_002 완료 (C++ 코어 스켈레톤), TASK_003 완료 (Python 바인딩 기본)
+- **Phase 2: Core Features** – TASK_004 완료 (DeviceManager 구현, Python device 래퍼 및 get_device_count/set_current_device, __init__ re-export, C++/Python 테스트)

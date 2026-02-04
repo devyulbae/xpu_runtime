@@ -50,3 +50,36 @@ def get_version() -> str:
     if _get_native_version is not None:
         return _get_native_version()
     return __version__
+
+
+# Convenience re-exports for device API
+from xpuruntime.runtime.device import (
+    Device,
+    DeviceCountsType,
+    format_device_counts,
+    get_current_device,
+    get_device_count,
+    get_device_counts,
+    set_current_device,
+)
+
+__all__ = [
+    "__version__",
+    "get_version",
+    "XpuRuntimeError",
+    "CudaError",
+    "OutOfMemoryError",
+    "UnsupportedOperationError",
+    "DeviceInfo",
+    "DeviceManager",
+    "MemoryType",
+    "MemoryStats",
+    "MemoryManager",
+    "Device",
+    "DeviceCountsType",
+    "format_device_counts",
+    "get_device_count",
+    "get_device_counts",
+    "get_current_device",
+    "set_current_device",
+]
